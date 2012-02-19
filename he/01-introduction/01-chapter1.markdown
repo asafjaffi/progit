@@ -59,23 +59,21 @@ Insert 18333fig0103.png
 
 ### חתכים, לא הבדלים ###
 
-The major difference between Git and any other VCS (Subversion and friends included) is the way Git thinks about its data. Conceptually, most other systems store information as a list of file-based changes. These systems (CVS, Subversion, Perforce, Bazaar, and so on) think of the information they keep as a set of files and the changes made to each file over time, as illustrated in Figure 1-4.
-
-ההבדל המרכזי בין Git ובין מערכות אחרות (כולל Subversion וחבריו) הוא הדרך בה Git חושב על מידע. 
+ההבדל המרכזי בין Git ובין מערכות אחרות (כולל Subversion וחבריו) הוא הדרך בה Git חושב על מידע. כתפיסה, רוב המערכות האחרות אוצרות מידע במעין רשימה של שינויים עבור קובץ מסויים. מערכות אלו (CVS, Subversion, Perforce, Bazaar וכך הלאה) חושבות על המידע שהן שומרות כצירוף של קבוצת קבצים והשינויים שנעשו בקבצים אלו לאורך זמן, כפי שמדגם בתרשים 1-4.
 
 Insert 18333fig0104.png 
-Figure 1-4. Other systems tend to store data as changes to a base version of each file.
+תרשים 1-4. מערכות אחרות נוטות לאגור מידע כשינויים לגרסת בסיס של כל קובץ.
 
-Git doesn’t think of or store its data this way. Instead, Git thinks of its data more like a set of snapshots of a mini filesystem. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again—just a link to the previous identical file it has already stored. Git thinks about its data more like Figure 1-5. 
+Git לא חושב על או שומר מידע בדרך זו. לחלופין, Git חושב על המידע שלו כקבוצת חתכים של מערכת קבצים מיניאטורית. באופן בסיסי, כל פעם שאת מכניסה (commit), או שומרת את המצב של הפרוייקט שלך ב Git, הוא מצלם חתך של איך שהקבצים שלך נראים באותו רגע ושומר הפניה אל החתך. לשם היעילות, אם קבצים לא השתנו, Git לא שומר את הקובץ שוב - רק קישור (link) לקובץ הזהה שכבר נשמר קודם. Git חושב על המידע שלו בדומה לתרשים 1-5.
 
 Insert 18333fig0105.png 
-Figure 1-5. Git stores data as snapshots of the project over time.
+תרשים 1-5. Git שומר מידע כחתכים של הפרוייקט לאורך זמן.
 
-This is an important distinction between Git and nearly all other VCSs. It makes Git reconsider almost every aspect of version control that most other systems copied from the previous generation. This makes Git more like a mini filesystem with some incredibly powerful tools built on top of it, rather than simply a VCS. We’ll explore some of the benefits you gain by thinking of your data this way when we cover Git branching in Chapter 3.
+זוהי הבחנה חשובה בין Git וכמעט כל שאר מנהלי הגרסאות. זה מכריח את Git לשקול מחדש כמעט כל היבט של ניהול גרסאות שרוב המערכות האחרות העתיקו מקודמיהן. כך Git נעשה יותר דומה למערכת קבצים קטנה עם כמה כלים חזקים להפליא שבנויים לתוכה, מאשר סתם כלי לניהול גרסאות. נחקור כמה מהיתרונות הגלומים בתפיסת כזו של מידע כשנלמד על הסתעפות ענפים ב Git בפרק 3.
 
-### Nearly Every Operation Is Local ###
+### כמעט כל פעולה היא מקומית ###
 
-Most operations in Git only need local files and resources to operate — generally no information is needed from another computer on your network.  If you’re used to a CVCS where most operations have that network latency overhead, this aspect of Git will make you think that the gods of speed have blessed Git with unworldly powers. Because you have the entire history of the project right there on your local disk, most operations seem almost instantaneous.
+רוב הפעולות ב Git צריכות רק קבצים ומשאבים מקומיים בכדי להתבצע - באופן כללי, אין כלל צורך במידע ממחשב אחר ברשת שלך. אם את רגילה למערכות ריכוזיות, שברוב הפעולות בהן, תשלמי את המחיר ההוא של גישה לרשת, הרי שהצד הזה של Git יגרום לך לחשוב שאלוהי המהירות ברכו את Git בכוחות על טבעיים. מכיוון שכל ההיסטוריה של הפרוייקט נמצא ממש כאן על הדיסק המקומי שלך, רוב הפעולות יראו לך כמעט מיידיות.
 
 For example, to browse the history of the project, Git doesn’t need to go out to the server to get the history and display it for you—it simply reads it directly from your local database. This means you see the project history almost instantly. If you want to see the changes introduced between the current version of a file and the file a month ago, Git can look up the file a month ago and do a local difference calculation, instead of having to either ask a remote server to do it or pull an older version of the file from the remote server to do it locally.
 
