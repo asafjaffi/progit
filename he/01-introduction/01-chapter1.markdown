@@ -28,7 +28,7 @@ Insert 18333fig0102.png
 
 המבנה הזה הציע יתרונות רבים, במיוחד לעומת גרסאות מקומיות. לדוגמא, כולם יודעים במידה מסויימת מה כל אחד בפרוייקט עושה. למנהלים יש שליטה מדוייקת על מי יכול לעשות מה; וזה קל הרבה יותר לנהל מערכת ריכוזית מאשר להתעסק עם בסיסי מידע מקומיים בכל תחנת קצה.
 
-עם זאת, למבנה הזה יש כמה חסרונות רציניים. הבולט מביניהם הוא שהשרת מהווה למעשה נקודת כשל יחידה. אם השרת מושבת למשך שעה, אז במשך שעה זו אף אחד לא יכול לשתף בכלל, או לשמור גרסאות עם שינויים על שום דבר שעובדים עליו. אם הדיסק הקשיח, שבסיס הנתונים עליו, נפגם ולא נשמרו גיבויים סדירים, את פשוט מאבדת את הכל - את כל ההיסטוריה של הפרוייקט, למעט עותקים זמניים שיש במקרה לאנשים על המכונות המקומיות שלהם. גרסאות מקומיות סובלות מאותה הבעיה בדיוק - כל זמן שיש לך את כל ההיסטוריה של הפרוייקט במקום אחד, את מסתכנת בכך שתאבדי את כולו.
+עם זאת, למבנה הזה יש כמה חסרונות רציניים. הבולט מביניהם הוא שהשרת מהווה למעשה נקודת כשל יחידה. אם השרת מושבת למשך שעה, אז במשך שעה זו אף אחד לא יכול לשתף בכלל, או לשמור גרסאות עם שינויים על שום דבר שעובדים עליו. אם הדיסק הקשיח, שבסיס הנתונים עליו, נפגם ולא נשמרו גיבויים סדירים, את פשוט מאבדת את הכל - את כל ההיסטוריה של הפרוייקט, למעט חתכים (snapshots) שיש במקרה לאנשים על המכונות המקומיות שלהם. גרסאות מקומיות סובלות מאותה הבעיה בדיוק - כל זמן שיש לך את כל ההיסטוריה של הפרוייקט במקום אחד, את מסתכנת בכך שתאבדי את כולו.
 
 ### ניהול גרסאות מבוזר ###
 
@@ -55,11 +55,13 @@ Insert 18333fig0103.png
 
 ## יסודות Git ##
 
-So, what is Git in a nutshell? This is an important section to absorb, because if you understand what Git is and the fundamentals of how it works, then using Git effectively will probably be much easier for you. As you learn Git, try to clear your mind of the things you may know about other VCSs, such as Subversion and Perforce; doing so will help you avoid subtle confusion when using the tool. Git stores and thinks about information much differently than these other systems, even though the user interface is fairly similar; understanding those differences will help prevent you from becoming confused while using it.
+אז מה זה Git על רגל אחת? זאת פסקה שחשוב להפנים, מכיוון שאם הבנת מהו Git ואת היסודות לאיך שהוא עובד, אז כנראה יהיה לך הרבה יותר קל להשתמש ב Git ביעילות. תוך כדי שאת לומדת את Git, השתדלי לנקות את הראש משאר הדברים שאולי את יודעת על מנהלי גרסאות אחרים כמו Subversion או Perforce; זה יעזור לך להימנע מלהתבלבל בדקויות של שימוש בכלי. האופן בו Git שומר וחושב על מידע שונה באופן מהותי מהכלים האחרים, למרות שממשק המשתמש די דומה; הבנת ההבדלים תעזור לך שלא להתבלבל בזמן השימוש בו.
 
-### Snapshots, Not Differences ###
+### חתכים, לא הבדלים ###
 
 The major difference between Git and any other VCS (Subversion and friends included) is the way Git thinks about its data. Conceptually, most other systems store information as a list of file-based changes. These systems (CVS, Subversion, Perforce, Bazaar, and so on) think of the information they keep as a set of files and the changes made to each file over time, as illustrated in Figure 1-4.
+
+ההבדל המרכזי בין Git ובין מערכות אחרות (כולל Subversion וחבריו) הוא הדרך בה Git חושב על מידע. 
 
 Insert 18333fig0104.png 
 Figure 1-4. Other systems tend to store data as changes to a base version of each file.
